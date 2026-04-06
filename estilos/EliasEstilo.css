@@ -1,0 +1,431 @@
+/* ========================================
+   - TEMA UNIFICADO
+   ======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap');
+
+:root {
+    /* PALETA UNIFICADA - IGUAL EN TODAS LAS PÁGINAS */
+    --primary-dark: #0f172a;
+    --secondary-dark: #1e293b;
+    --accent-gold: #f59e0b;
+    --accent-light: #fbbf24;
+    --text-primary: #ffffff;
+    --text-secondary: #e2e8f0;
+    --text-dark: #1e293b;
+    --text-gray: #64748b;
+    --bg-light: #f8fafc;
+    --bg-card: #ffffff;
+    
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
+    --shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.2);
+    
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-light);
+    color: var(--text-dark);
+    font-family: 'Poppins', -apple-system, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ========================================
+   - IDÉNTICO AL HOME
+   ======================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+    border-bottom: 3px solid var(--accent-gold);
+}
+
+.navbar nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-link {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition-medium);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    position: relative;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--accent-gold);
+    transition: var(--transition-medium);
+}
+
+.nav-link:hover {
+    color: var(--accent-gold);
+}
+
+.nav-link:hover::before {
+    width: 80%;
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+.hero-section {
+    width: 100%;
+    height: 90vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5) saturate(1.1);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(15, 23, 42, 0.7) 60%,
+        rgba(15, 23, 42, 0.95) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    letter-spacing: 2px;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    max-width: 800px;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+/* ========================================
+   BIO SECTION
+   ======================================== */
+.bio-section {
+    max-width: 1200px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+}
+
+.bio-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.bio-item {
+    background: var(--bg-card);
+    padding: 1.8rem;
+    border-radius: 15px;
+    border-left: 4px solid var(--accent-gold);
+    transition: var(--transition-medium);
+    box-shadow: var(--shadow-sm);
+}
+
+.bio-item:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow-md);
+}
+
+.bio-item strong {
+    color: var(--accent-gold);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+/* ========================================
+   INFO SECTION
+   ======================================== */
+.info-section {
+    max-width: 1400px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+}
+
+.section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+    position: relative;
+    padding-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: var(--accent-gold);
+    border-radius: 2px;
+}
+
+/* ========================================
+   ACHIEVEMENTS GRID
+   ======================================== */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.achievement-card {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    border-top: 4px solid var(--accent-gold);
+    transition: var(--transition-medium);
+}
+
+.achievement-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-title {
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.achievement-card h4 {
+    color: var(--accent-gold);
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.75rem;
+    font-weight: 600;
+}
+
+.achievement-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.achievement-card li {
+    padding: 0.6rem 0;
+    color: var(--text-gray);
+    transition: var(--transition-fast);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.achievement-card li:last-child {
+    border-bottom: none;
+}
+
+.achievement-card li:hover {
+    color: var(--text-dark);
+    padding-left: 0.5rem;
+}
+
+/* ========================================
+   LEGACY SECTION
+   ======================================== */
+.legacy-section {
+    margin: 5rem 0;
+}
+
+.icon-text {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: var(--bg-card);
+    border-radius: 20px;
+    border-left: 5px solid var(--accent-gold);
+    box-shadow: var(--shadow-md);
+    line-height: 1.9;
+    color: var(--text-gray);
+}
+
+.icon-text p {
+    margin-bottom: 1.5rem;
+}
+
+.quote {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #fff9f0;
+    border-left: 4px solid var(--accent-gold);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   STATS SECTION
+   ======================================== */
+.stats-section {
+    max-width: 1200px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-medium);
+    border: 2px solid transparent;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-gold);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--accent-gold);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--text-gray);
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+/* ========================================
+   FOOTER - IDÉNTICO AL HOME
+   ======================================== */
+.footer {
+    background: var(--primary-dark);
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 3px solid var(--accent-gold);
+}
+
+.footer p {
+    color: var(--text-secondary);
+    margin: 0.5rem 0;
+}
+
+.footer a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    font-weight: 600;
+}
+
+.footer a:hover {
+    color: var(--accent-light);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 75vh;
+    }
+    
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .icon-text {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
