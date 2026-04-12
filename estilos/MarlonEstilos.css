@@ -1,96 +1,230 @@
-/* ========================================
-   DISEÑO DE PRODUCTOS (GRID)
-   ======================================== */
-.productos-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 3rem;
-}
-
-.producto-bloque {
-    background: var(--bg-card);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-    transition: var(--transition-medium);
-    display: flex;
-    flex-direction: column; /* Contenido uno debajo de otro */
-    border: 1px solid #e2e8f0;
-}
-
-.producto-bloque:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-xl);
-}
-
-/* TAMAÑO ÚNICO DE IMAGENES */
-.seccion-imagen img {
-    width: 100%;
-    height: 250px; /* Altura fija para todas */
-    object-fit: cover; /* Ajusta la imagen sin estirarla */
-    display: block;
-}
-
-.contenido {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.contenido h2 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.5rem;
-    border-left: 4px solid var(--accent-gold);
-}
-
-.desc-corta {
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
-    text-align: left;
-    height: 50px; /* Alinea los textos */
-}
-
-/* PRECIOS ORDENADOS */
-.precio-tag {
-    text-align: center;
-    margin-top: auto;
-    padding-top: 1rem;
-    border-top: 1px solid #eee;
-}
-
-.precio-tag strike {
-    color: #ef4444;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.precio-tag span {
-    color: var(--primary-dark);
-    font-size: 2rem;
-    font-weight: 800;
-}
-
-.intro-text {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 2rem;
-}
-
-/* RESPONSIVE PARA MÓVIL */
-@media (max-width: 600px) {
-    .productos-container {
-        grid-template-columns: 1fr; /* Una sola columna en celular */
+    /* ========================================
+       VARIABLES Y CONFIGURACIÓN (Estilo Moderno)
+       ======================================== */
+    :root {
+        --primary-dark: #1a1a1a;
+        --accent-gold: #c6a355;
+        --accent-gold-hover: #d4b875;
+        --text-main: #333333;
+        --text-muted: #666666;
+        --bg-body: #fdfdfd;
+        --bg-card: #ffffff;
+        --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+        --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.1);
+        --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1);
+        --transition: all 0.3s ease;
+        /* Fuentes elegantes */
+        --font-heading: 'Playfair Display', serif;
+        --font-body: 'Montserrat', sans-serif;
     }
 
-    .seccion-imagen img {
-        height: 200px; /* Un poco más pequeñas en celular */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: var(--font-body);
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* ========================================
+       NAVEGACIÓN Y TÍTULOS
+       ======================================== */
+    .navbar {
+        padding: 25px 0;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: var(--transition);
+    }
+
+    .nav-link:hover {
+        color: var(--accent-gold);
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-family: var(--font-heading);
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        text-align: center;
+        color: var(--primary-dark);
+        margin: 20px 0 40px;
+        position: relative;
+        padding-bottom: 15px;
     }
-}
+
+    h1::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: var(--accent-gold);
+    }
+
+    /* ========================================
+       IMAGEN PRINCIPAL (HERO)
+       ======================================== */
+    .main-img {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 40px;
+        display: block;
+    }
+
+    .intro-text {
+        text-align: center;
+        max-width: 750px;
+        margin: 0 auto 60px;
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        font-weight: 300;
+    }
+
+    /* ========================================
+       GRILLA DE PRODUCTOS
+       ======================================== */
+    .productos-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 35px;
+        margin-bottom: 80px;
+    }
+
+    .producto-bloque {
+        background: var(--bg-card);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        border: 1px solid rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .producto-bloque:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    /* TRATAMIENTO DE IMÁGENES DE PRODUCTO */
+    .seccion-imagen {
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        background-color: #f8f8f8;
+        position: relative;
+    }
+
+    .seccion-imagen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .producto-bloque:hover .seccion-imagen img {
+        transform: scale(1.1);
+    }
+
+    /* Sombra interna para que la imagen se vea más integrada */
+    .seccion-imagen::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        box-shadow: inset 0 -15px 30px rgba(0,0,0,0.05);
+    }
+
+    /* ========================================
+       CONTENIDO DE LA TARJETA
+       ======================================== */
+    .contenido {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contenido h2 {
+        font-family: var(--font-heading);
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .desc-corta {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-bottom: 15px;
+        min-height: 40px;
+    }
+
+    .logros {
+        list-style: none;
+        font-size: 0.85rem;
+        background: #f9f9f9;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .logros li {
+        margin-bottom: 5px;
+        border-bottom: 1px solid rgba(0,0,0,0.03);
+        padding-bottom: 3px;
+    }
+
+    /* PRECIOS */
+    .precio-tag {
+        text-align: center;
+        margin-top: auto;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+    }
+
+    .precio-tag strike {
+        color: #cc0000;
+        margin-right: 10px;
+        font-size: 1rem;
+    }
+
+    .precio-tag span {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        font-family: var(--font-heading);
+    }
+
+    /* FOOTER */
+    .footer {
+        background: var(--primary-dark);
+        color: white;
+        text-align: center;
+        padding: 30px 0;
+        margin-top: 50px;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+        .main-img { height: 250px; }
+        .seccion-imagen { height: 250px; }
+    }
